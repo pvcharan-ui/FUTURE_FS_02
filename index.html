@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mini Store — FUTURE_FS_02</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="container">
+      <h1>Mini Store</h1>
+      <div class="cart-preview">
+        <button id="open-cart" aria-controls="cart">Cart (<span id="cart-count">0</span>)</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="products" class="grid" aria-live="polite"></section>
+
+    <!-- Cart panel -->
+    <aside id="cart" class="cart hidden" aria-hidden="true" aria-label="Shopping cart">
+      <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button id="close-cart" aria-label="Close cart">×</button>
+      </div>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="cart-footer">
+        <div>Total: ₹<span id="cart-total">0</span></div>
+        <div class="cart-actions">
+          <button id="checkout" class="btn">Checkout</button>
+          <button id="clear-cart" class="btn ghost">Clear</button>
+        </div>
+      </div>
+    </aside>
+
+    <section id="message" class="hidden" role="status" aria-live="polite"></section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; Mini Store — FUTURE_FS_02</p>
+    </div>
+  </footer>
+
+  <!-- Product view modal -->
+  <div id="product-modal" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-action="close-modal"></div>
+    <div class="modal-panel" role="document">
+      <button id="modal-close" class="modal-close" aria-label="Close">×</button>
+      <div class="modal-content">
+        <img id="modal-img" src="" alt="">
+        <div class="modal-info">
+          <h3 id="modal-title"></h3>
+          <p id="modal-price" class="price"></p>
+          <p id="modal-desc" class="muted"></p>
+          <div class="modal-actions">
+            <button id="modal-add" class="btn">Add to cart</button>
+            <button id="modal-close-2" class="btn ghost">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="product.js" defer></script>
+  <script src="store.js" defer></script>
+</body>
+</html>
