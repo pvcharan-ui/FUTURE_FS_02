@@ -1,5 +1,5 @@
 <?php
-if(session_status() === PHP_SESSION_NONE) session_start();
+if (session_status() === PHP_SESSION_NONE) session_start();
 $current = basename($_SERVER['PHP_SELF']);
 ?>
 <!doctype html>
@@ -12,19 +12,25 @@ $current = basename($_SERVER['PHP_SELF']);
   <!-- Google font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/FUTURE_FS_02/assets/css/style.css">
+  <!-- use relative paths so same code works locally & on host -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- site JS (deferred) -->
+  <script src="assets/js/store.js" defer></script>
 </head>
 <body>
 <header class="site-header">
   <div class="container header-inner">
-    <a class="logo" href="/FUTURE_FS_02/">Mini Supermarket</a>
+    <a class="logo" href="index.php">Mini Supermarket</a>
 
     <nav class="main-nav" aria-label="Main navigation">
-      <a href="/FUTURE_FS_02/" class="nav-link <?= $current==='index.php' ? 'active' : '' ?>">Home</a>
-      <a href="/FUTURE_FS_02/cart.php" class="nav-link <?= $current==='cart.php' ? 'active' : '' ?>">Cart <span class="cart-count">(<?=
-        array_sum($_SESSION['cart'] ?? []) ?: 0 ?>)</span></a>
-      <!-- open admin in new tab so browser shows auth prompt immediately -->
-      <a href="/FUTURE_FS_02/admin/orders.php" target="_blank" rel="noopener noreferrer" class="nav-link admin-link">Admin</a>
+      <a href="index.php" class="nav-link <?= $current === 'index.php' ? 'active' : '' ?>">Home</a>
+      <a href="cart.php" class="nav-link <?= $current === 'cart.php' ? 'active' : '' ?>">
+        Cart <span id="cart-count">(<?= array_sum($_SESSION['cart'] ?? []) ?: 0 ?>)</span>
+      </a>
+
+      <!-- admin uses relative link to login (session-based) -->
+      <a href="admin/login.php" class="nav-link <?= $current === 'login.php' || $current === 'orders.php' ? 'active' : '' ?> admin-link">Admin</a>
     </nav>
   </div>
 </header>
